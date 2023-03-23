@@ -22,23 +22,24 @@ export default{
 },   
 methods: {
 
-  async urlFunction() {
+  async urlFunctionPlayer1() {
 
+    if (this.player1.tag.length > 2) {
     this.urlTag= `https://website-backend.w3champions.com/api/players/global-search?search=${this.player1.tag}&pageSize=20`;
 const resTag  = await fetch(this.urlTag);
 const dataTag  = await resTag.json();
 this.tagReturn =  dataTag;
+    }
+},
 
+async urlFunctionPlayer2() {
+
+  if (this.player2.tag.length > 2) {
 this.urlTag2= `https://website-backend.w3champions.com/api/players/global-search?search=${this.player2.tag}&pageSize=20`;
-const resTag2  = await fetch(this.urlTag);
+const resTag2  = await fetch(this.urlTag2);
 const dataTag2  = await resTag2.json();
 this.tagReturn2 =  dataTag2;
-
-
-
-
-console.log (dataTag)
-
+  }
 },
 
 
@@ -52,17 +53,17 @@ console.log (dataTag)
 <template>
   <div class="greetings">
   
-  {{ player1.tag }}
-    <input class="input-player1" type='text' v-model="player1.tag" list="player1">
+
+    <input class="input-player1" type='text' v-model="player1.tag" list="player1" v-on="urlFunctionPlayer1()">
     <datalist id="player1" class="tag" >
     <option v-for="tag in tagReturn"> {{tag.battleTag}} </option>
    </datalist>
-   {{ player2.tag }}
-    <input class="input-player1" type='text' v-model="player1.tag" list="player2">
+
+    <input class="input-player2" type='text' v-model="player2.tag" list="player2" v-on="urlFunctionPlayer2()">
     <datalist id="player2" class="tag" >
-    <option v-for="tag in tagReturn2"> {{tag.battleTag}} </option>
+    <option v-for="tag2 in tagReturn2"> {{tag2.battleTag}} </option>
    </datalist>
-<button class="button" v-on:click="urlFunction" > Count</button>
+
 
   </div>
 </template>
