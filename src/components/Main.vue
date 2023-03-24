@@ -15,7 +15,8 @@ export default{
      tagReturn2:[],
      urlTag:``,
      urlTag2:``,
-     
+     urlGames1:'',
+     urlGames2:'',
      
   }
 
@@ -42,16 +43,28 @@ this.tagReturn2 =  dataTag2;
   }
 },
 
+async showRivalry () {
+   
+
+
+  for(let i=2; i<15; i++) {
+this.urlGames1 = `https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=0&offset=0&pageSize=100&season=${i}&gamemode=1`
+ 
+//https://website-backend.w3champions.com/api/matches/search?playerId=PteN%2321803&gateway=20&offset=0&opponentId=DasH%2321453&pageSize=50&season=14
+
+  console.log (this.urlGames1);
 
 }
-
 }
+}
+}
+
+
 
 </script>
 
 
 <template>
-  <div class="greetings">
   
 
     <input class="input-player1" type='text' v-model="player1.tag" list="player1" v-on="urlFunctionPlayer1()">
@@ -63,9 +76,11 @@ this.tagReturn2 =  dataTag2;
     <datalist id="player2" class="tag" >
     <option v-for="tag2 in tagReturn2"> {{tag2.battleTag}} </option>
    </datalist>
+   
+   <br>
 
+   <button class="button-show" v-on:click="showRivalry"> Show</button>
 
-  </div>
 </template>
 
 <style scoped>
