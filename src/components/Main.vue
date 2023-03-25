@@ -91,6 +91,8 @@ const dataScore  = await resScore.json();
   console.log(this.score1, this.score2);
 
 }
+this.score1=0;
+   this.score2=0;
 }
 }
 }
@@ -102,23 +104,100 @@ const dataScore  = await resScore.json();
 
 <template>
   
+  <div class="container">
+    <div class="title"> W3Champions Rivalry Counter </div>
+    <div class="form">
 
-    <input class="input-player1" type='text' v-model="player1.tag" list="player1" v-on:input="urlFunctionPlayer1()">
+    <input class="input-player1 input" type='text' v-model="player1.tag" list="player1" v-on:input="urlFunctionPlayer1()">
     <datalist id="player1" class="tag" >
     <option v-for="tag in tagReturn"> {{tag.battleTag}} </option>
    </datalist>
 
-    <input class="input-player2" type='text' v-model="player2.tag" list="player2" v-on:input="urlFunctionPlayer2()">
+    <input class="input-player2 input" type='text' v-model="player2.tag" list="player2" v-on:input="urlFunctionPlayer2()">
     <datalist id="player2" class="tag2" >
     <option v-for="tag2 in tagReturn2"> {{tag2.battleTag}} </option>
    </datalist>
    
    <br>
 
+   <div class="results">
+
+   </div>
+
    <button class="button-show" v-on:click="showRivalry"> Show</button>
+
+
+  </div>
+  </div>
+
 
 </template>
 
 <style scoped>
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 90%;
+    height:90%;
+    gap:2rem;
+    border: 0.1rem rgba(0,0,0, 0.25 ) solid;
+    background-color: white;
+    background-size:cover;
+    border-radius: 0.25em;
+    background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.5) ),url(../assets/images/background/orchu.jpg);
+    overflow-y:auto ;
+}
+
+.title{
+        color:rgb(0, 87, 184);
+        font-size: 2rem;
+        text-align: center;
+       
+    }
+
+    .form{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        top:-1.5rem;
+        margin: auto;
+        align-items: center;
+        gap:0.5rem;
+        z-index: 3;
+    }
+
+
+      .input {
+                height: 1rem;
+                background-color: rgb(247, 244, 244);
+                border-radius:10px;
+                min-width: 15ch;
+                max-width: 30ch;
+                border-radius: 0.25em;
+                padding: 0.25em 0.5em;
+                font-size: 1rem;
+               
+
+
+
+
+                @media (min-width: 450px) and (max-width: 750px) {
+                    height: 1rem;
+                    width: 9rem;
+                    min-width: 10ch;
+                }
+                @media (max-width: 450px) {
+                    min-width: 8ch;
+                    height: 1rem;
+                    width: 8rem;
+                }
+            }
+
+.input:hover{
+                    border-color: rgb(0, 87, 184);
+                    box-shadow: 0 0 15px rgb(0, 87, 184);
+                    }
 
 </style>
