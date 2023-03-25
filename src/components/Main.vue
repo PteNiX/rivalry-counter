@@ -35,12 +35,15 @@ this.tagReturn =  dataTag;
 
 async urlFunctionPlayer2() {
 
-  if (this.player2.tag.length > 2) {
+/*   if (this.player2.tag.length > 2) {
 this.urlTag2= `https://website-backend.w3champions.com/api/players/global-search?search=${this.player2.tag}&pageSize=20`;
 const resTag2  = await fetch(this.urlTag2);
 const dataTag2  = await resTag2.json();
 this.tagReturn2 =  dataTag2;
-  }
+
+  } */
+
+  
 },
 
 async showRivalry () {
@@ -48,11 +51,12 @@ async showRivalry () {
 
 
   for(let i=2; i<15; i++) {
-this.urlGames1 = `https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=0&offset=0&pageSize=100&season=${i}&gamemode=1`
+/* this.urlGames1 = `https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=0&offset=0&pageSize=100&season=${i}&gamemode=1` */
  
-//https://website-backend.w3champions.com/api/matches/search?playerId=PteN%2321803&gateway=20&offset=0&opponentId=DasH%2321453&pageSize=50&season=14
+this.urlGames1 =`https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=20&offset=0&opponentId=${this.player2.tag.trim().replace('#', '%23')}&pageSize=50&season=${i}&gamemode=1`;
 
   console.log (this.urlGames1);
+
 
 }
 }
