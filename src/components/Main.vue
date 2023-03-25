@@ -17,6 +17,8 @@ export default{
      urlTag2:``,
      urlGames1:'',
      urlGames2:'',
+     score1:0,
+     score2:0,
      
   }
 
@@ -51,12 +53,42 @@ async showRivalry () {
 
 
   for(let i=2; i<15; i++) {
-this.urlGames1 = `https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=0&offset=0&pageSize=100&season=${i}&gamemode=1`
+/* this.urlGames1 = `https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=0&offset=0&pageSize=100&season=${i}&gamemode=1` */
  
 this.urlGames1 =`https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=20&offset=0&opponentId=${this.player2.tag.trim().replace('#', '%23')}&pageSize=50&season=${i}&gamemode=1`;
 
-  console.log (this.urlGames1);
+const resScore  = await fetch(this.urlGames1);
+const dataScore  = await resScore.json();
 
+  console.log (dataScore);
+  for (let i = 0; i < dataScore.matches.length; i++) {
+    if (
+      dataScore.matches[i].teams[0].players[0].battleTag == `${this.player1.tag.trim()}` &&
+      dataScore.matches[i].teams[0].won == true
+    ) {
+      this.score1++;
+    }
+      else if (
+      dataScore.matches[i].teams[0].players[0].battleTag == `${this.player1.tag.trim()}` &&
+      dataScore.matches[i].teams[0].won == false
+      ){
+        this.score2++;
+      }
+  
+    if (
+      dataScore.matches[i].teams[1].players[0].battleTag == `${this.player1.tag.trim()}`  &&
+      dataScore.matches[i].teams[1].won == true
+      /* dataScore.matches[i].teams[1].players[0].race == `${this.mmrForm.race}` */
+    ) {
+      this.score1++;
+    }
+    else if (dataScore.matches[i].teams[1].players[0].battleTag == `${this.player1.tag.trim()}` &&
+      dataScore.matches[i].teams[1].won == false){
+        this.score2++;
+      }
+  }
+
+  console.log(this.score1, this.score2);
 
 }
 }
