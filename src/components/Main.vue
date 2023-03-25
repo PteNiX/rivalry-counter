@@ -35,13 +35,13 @@ this.tagReturn =  dataTag;
 
 async urlFunctionPlayer2() {
 
-/*   if (this.player2.tag.length > 2) {
+  if (this.player2.tag.length > 2) {
 this.urlTag2= `https://website-backend.w3champions.com/api/players/global-search?search=${this.player2.tag}&pageSize=20`;
 const resTag2  = await fetch(this.urlTag2);
 const dataTag2  = await resTag2.json();
 this.tagReturn2 =  dataTag2;
 
-  } */
+  }
 
   
 },
@@ -51,7 +51,7 @@ async showRivalry () {
 
 
   for(let i=2; i<15; i++) {
-/* this.urlGames1 = `https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=0&offset=0&pageSize=100&season=${i}&gamemode=1` */
+this.urlGames1 = `https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=0&offset=0&pageSize=100&season=${i}&gamemode=1`
  
 this.urlGames1 =`https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=20&offset=0&opponentId=${this.player2.tag.trim().replace('#', '%23')}&pageSize=50&season=${i}&gamemode=1`;
 
@@ -71,13 +71,13 @@ this.urlGames1 =`https://website-backend.w3champions.com/api/matches/search?play
 <template>
   
 
-    <input class="input-player1" type='text' v-model="player1.tag" list="player1" v-on="urlFunctionPlayer1()">
+    <input class="input-player1" type='text' v-model="player1.tag" list="player1" v-on:input="urlFunctionPlayer1()">
     <datalist id="player1" class="tag" >
     <option v-for="tag in tagReturn"> {{tag.battleTag}} </option>
    </datalist>
 
-    <input class="input-player2" type='text' v-model="player2.tag" list="player2" v-on="urlFunctionPlayer2()">
-    <datalist id="player2" class="tag" >
+    <input class="input-player2" type='text' v-model="player2.tag" list="player2" v-on:input="urlFunctionPlayer2()">
+    <datalist id="player2" class="tag2" >
     <option v-for="tag2 in tagReturn2"> {{tag2.battleTag}} </option>
    </datalist>
    
