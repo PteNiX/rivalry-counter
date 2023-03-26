@@ -90,9 +90,21 @@ const dataScore  = await resScore.json();
 
   console.log(this.score1, this.score2);
 
+
 }
+
+let score1:any = document.querySelector('.score-player1');
+let score2:any = document.querySelector('.score-player2');
+  score1.innerHTML = this.score1;
+  score2.innerHTML = this.score2;
+  let namePlayer1:any = document.querySelector('.name-player1');
+  let namePlayer2:any = document.querySelector('.name-player2');
+
+  namePlayer1.innerHTML = this.player1.tag.trim().split('#')[0];
+  namePlayer2.innerHTML = this.player2.tag.trim().split('#')[0];
+
 this.score1=0;
-   this.score2=0;
+this.score2=0;
 }
 }
 }
@@ -120,12 +132,18 @@ this.score1=0;
    
    <br>
 
+
+
+   <button class="button-show button" v-on:click="showRivalry"> Show</button>
    <div class="results">
-
+      <div class="all-result">
+        <span class="name-player1 big-letter"></span>
+        <span class="score-player1 big-letter"></span>
+        <span class="big-letter">:</span> 
+        <span class="score-player2 big-letter"></span>
+        <span class="name-player2 big-letter"></span>
+      </div>
    </div>
-
-   <button class="button-show" v-on:click="showRivalry"> Show</button>
-
 
   </div>
   </div>
@@ -146,12 +164,12 @@ this.score1=0;
     background-color: white;
     background-size:cover;
     border-radius: 0.25em;
-    background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.5) ),url(../assets/images/background/orchu.jpg);
+    background-image: linear-gradient( rgba(255, 255, 255, 0.7), rgba(0, 0, 0,0.5) ),url(../assets/images/background/udhu2.jpg);
     overflow-y:auto ;
 }
 
 .title{
-        color:rgb(0, 87, 184);
+        color:rgb(108, 0, 151);
         font-size: 2rem;
         text-align: center;
        
@@ -162,11 +180,11 @@ this.score1=0;
         display: flex;
         flex-direction: column;
         top:-1.5rem;
-        margin: auto;
+        
         align-items: center;
         gap:0.5rem;
         z-index: 3;
-    }
+       }
 
 
       .input {
@@ -181,9 +199,7 @@ this.score1=0;
                
 
 
-
-
-                @media (min-width: 450px) and (max-width: 750px) {
+/*                 @media (min-width: 450px) and (max-width: 750px) {
                     height: 1rem;
                     width: 9rem;
                     min-width: 10ch;
@@ -192,12 +208,48 @@ this.score1=0;
                     min-width: 8ch;
                     height: 1rem;
                     width: 8rem;
-                }
+                } */
             }
 
 .input:hover{
-                    border-color: rgb(0, 87, 184);
-                    box-shadow: 0 0 15px rgb(0, 87, 184);
+                    border-color: rgb(108, 0, 151);
+                    box-shadow: 0 0 15px rgb(108, 0, 151);
                     }
 
+  .button{
+            position: relative;
+            width:4.5rem;
+            height: 2rem;
+            background-color:rgb(108, 0, 151);
+            color:white; 
+             border: none;
+            cursor: pointer;
+            border-radius: 0.25em;
+            padding: 0.25em 0.5em;
+            font-size: 1rem;
+            cursor: pointer;
+            line-height: 1.1;
+  }
+
+
+  .button:hover{
+                background-color:rgb(108, 0, 151);
+                box-shadow: 0 0 15px rgb(255, 215, 0);
+            }
+
+            .button:active {
+                background-color:rgb(108, 0, 151);
+                color:rgb(255, 215, 0);
+            }
+
+            .big-letter{
+              color:rgb(108, 0, 151);
+              font-size: 35px;
+              text-shadow: 1px 1px 1px rgb(255, 255, 255);
+              
+            }
+            .all-result{
+              display: flex;
+              gap:15px;
+            }
 </style>
