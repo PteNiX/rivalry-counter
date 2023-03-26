@@ -19,6 +19,14 @@ export default{
      urlGames2:'',
      score1:0,
      score2:0,
+     orc:2,
+     human:1,
+     elf:4,
+     undead:8,
+     rnd:0,
+     scoreHO1:0,
+     scoreHO2:0,
+     raceArray:[],
      
   }
 
@@ -88,9 +96,6 @@ const dataScore  = await resScore.json();
       }
   }
 
-  console.log(this.score1, this.score2);
-
-
 }
 
 let score1:any = document.querySelector('.score-player1');
@@ -99,13 +104,107 @@ let score2:any = document.querySelector('.score-player2');
   score2.innerHTML = this.score2;
   let namePlayer1:any = document.querySelector('.name-player1');
   let namePlayer2:any = document.querySelector('.name-player2');
-
   namePlayer1.innerHTML = this.player1.tag.trim().split('#')[0];
   namePlayer2.innerHTML = this.player2.tag.trim().split('#')[0];
 
 this.score1=0;
 this.score2=0;
+/*   console.log(this.score1, this.score2); */
+},
+
+
+async showRivalryByRaces (race1:number,race2:number) {
+   
+   for(let i=2; i<15; i++) {
+  
+ this.urlGames1 =`https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=20&offset=0&opponentId=${this.player2.tag.trim().replace('#', '%23')}&pageSize=50&season=${i}&gamemode=1`;
+ 
+ const resScore  = await fetch(this.urlGames1);
+ const dataScore  = await resScore.json();
+ let raceArray:any;
+   console.log (dataScore);
+   for (let i = 0; i < dataScore.matches.length; i++) {
+     if (
+       dataScore.matches[i].teams[0].players[0].battleTag == `${this.player1.tag.trim()}` &&
+       dataScore.matches[i].teams[0].won == true &&
+       dataScore.matches[i].teams[0].players[0].race == `${race1}` &&
+       dataScore.matches[i].teams[1].players[0].race == `${race2}`
+
+     ) {
+       this.scoreHO1++;
+     }
+       else if (
+       dataScore.matches[i].teams[0].players[0].battleTag == `${this.player1.tag.trim()}` &&
+       dataScore.matches[i].teams[0].won == false &&
+       dataScore.matches[i].teams[0].players[0].race == `${race1}` &&
+       dataScore.matches[i].teams[1].players[0].race == `${race2}`
+
+       ){
+         this.scoreHO2++;
+       }
+   
+     if (
+       dataScore.matches[i].teams[1].players[0].battleTag == `${this.player1.tag.trim()}`  &&
+       dataScore.matches[i].teams[1].won == true &&
+       dataScore.matches[i].teams[0].players[0].race == `${race2}` &&
+       dataScore.matches[i].teams[1].players[0].race == `${race1}`
+     ) {
+       this.scoreHO1++;
+     }
+     else if (dataScore.matches[i].teams[1].players[0].battleTag == `${this.player1.tag.trim()}` &&
+       dataScore.matches[i].teams[1].won == false &&
+       dataScore.matches[i].teams[0].players[0].race == `${race2}` &&
+       dataScore.matches[i].teams[1].players[0].race == `${race1}`){
+         this.scoreHO2++;
+       }
+
+      
+   /*     raceArray.push(this.scoreHO1);
+       raceArray.push(this.scoreHO2); */
+   }
+   console.log(this.scoreHO1,this.scoreHO2);
+  /*  console.log(this.scoreHO1, this.scoreHO2); */
+
+
+   this.raceArray=raceArray;
+ 
+ }
+
+
+
+
+},
+showAll (){
+  this.showRivalryByRaces (this.orc,this.human)
+  this.showRivalryByRaces (this.orc,this.orc)
+  this.showRivalryByRaces (this.orc,this.elf)
+  this.showRivalryByRaces (this.orc,this.undead)
+  this.showRivalryByRaces (this.orc,this.rnd)
+  this.showRivalryByRaces (this.human,this.human)
+  this.showRivalryByRaces (this.human,this.orc)
+  this.showRivalryByRaces (this.human,this.elf)
+  this.showRivalryByRaces (this.human,this.undead)
+  this.showRivalryByRaces (this.human,this.rnd)
+  this.showRivalryByRaces (this.elf,this.human)
+  this.showRivalryByRaces (this.elf,this.orc)
+  this.showRivalryByRaces (this.elf,this.elf)
+  this.showRivalryByRaces (this.elf,this.undead)
+  this.showRivalryByRaces (this.elf,this.rnd)
+  this.showRivalryByRaces (this.undead,this.human)
+  this.showRivalryByRaces (this.undead,this.orc)
+  this.showRivalryByRaces (this.undead,this.elf)
+  this.showRivalryByRaces (this.undead,this.undead)
+  this.showRivalryByRaces (this.undead,this.rnd)
+  this.showRivalryByRaces (this.rnd,this.human)
+  this.showRivalryByRaces (this.rnd,this.orc)
+  this.showRivalryByRaces (this.rnd,this.elf)
+  this.showRivalryByRaces (this.rnd,this.undead)
+  this.showRivalryByRaces (this.rnd,this.rnd)
+
+  console.log(this.raceArray)
 }
+
+
 }
 }
 
@@ -134,7 +233,7 @@ this.score2=0;
 
 
 
-   <button class="button-show button" v-on:click="showRivalry"> Show</button>
+   <button class="button-show button" v-on:click="showRivalry(); showAll()"> Show</button>
    <div class="results">
       <div class="all-result">
         <span class="name-player1 big-letter"></span>
