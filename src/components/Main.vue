@@ -158,7 +158,13 @@ let score2:any = document.querySelector('.score-player2');
   let namePlayer2:any = document.querySelector('.name-player2');
   namePlayer1.innerHTML = this.player1.tag.trim().split('#')[0];
   namePlayer2.innerHTML = this.player2.tag.trim().split('#')[0];
+  let winrate1:any = document.querySelector('.winrate1');
+let winrate2:any = document.querySelector('.winrate2');
 
+if((this.score1 +this.score2)!=0) {
+winrate1.innerHTML =  Math.round((100*this.score1)/ (this.score1 +this.score2)) +'%';
+winrate2.innerHTML =  Math.round((100*this.score2)/ (this.score1 +this.score2)) + '%';
+}
 this.score1=0;
 this.score2=0;
 /*   console.log(this.score1, this.score2); */
@@ -276,8 +282,16 @@ let player2score=0;
 
   break;
    } 
+
+   let percent1:any=0;
+   let percent2:any=0;
+
+   if((player1score +player2score)!=0) {
+   percent1 = Math.round((100 * player1score)/ (player1score + player2score))+'%';
+   percent2 = Math.round((100 * player2score)/ (player1score + player2score))+'%';
+   }
 this.raceArray.shift;
- this.raceArray.push(race1,player1score,player2score, race2);
+ this.raceArray.push(percent1,race1,player1score,player2score, race2, percent2);
  console.log(this.raceArray)
 
 
@@ -346,11 +360,13 @@ showAll (){
    <button class="button-show button" v-on:click="showRivalry(); showAll()"> Show</button>
    <div class="results">
       <div class="all-result">
+        <span class="winrate1 big-letter"></span>
         <span class="name-player1 big-letter"></span>
         <span class="score-player1 big-letter"></span>
         <span class="big-letter">:</span> 
         <span class="score-player2 big-letter"></span>
         <span class="name-player2 big-letter"></span>
+        <span class="winrate2 big-letter"></span>
       </div>
    </div>
 
