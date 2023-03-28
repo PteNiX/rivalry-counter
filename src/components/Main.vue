@@ -165,7 +165,7 @@ this.score2=0;
 },
 
 
-async showRivalryByRaces (race1:number,race2:number,var1:any, var2:any) {
+async showRivalryByRaces (race1:any,race2:any,var1:any, var2:any) {
    
 let player1score=0;
 let player2score=0;
@@ -217,16 +217,67 @@ let player2score=0;
       
    }
 
-
-
+ 
 
 
   /* console.log(this.scoreOH1,this.scoreOH2,this.scoreOO1,this.scoreOO2,this.scoreOE1,this.scoreOE2,this.scoreOU1,this.scoreOU2,this.scoreOR1,this.scoreOR2,this.scoreUR1, this.scoreUR2,this.scoreUU1, this.scoreUU2,this.scoreUE1, this.scoreUE2, this.scoreUO1, this.scoreUO2,this.scoreUH1, this.scoreUH2 ) */
   /*  this.raceArray=raceArray; */
 
  }
+
+ switch (race1) {
+    case 0:  race1= 'R';
+   
+    break;
+
+  case 1:  race1= 'H';
+   
+  break;
+
+  case 2:  race1= 'O';
+   
+  break;
+
+  case 4:  race1= 'N';
+   
+   break;
+
+   case 8:  race1= 'U';
+   
+   break;
+
+  default:
+
+  break;
+   } 
+
+   switch (race2) {
+    case 0:  race2= 'R';
+   
+    break;
+
+  case 1:  race2= 'H';
+   
+  break;
+
+  case 2:  race2= 'O';
+   
+  break;
+
+  case 4:  race2= 'N';
+   
+   break;
+
+   case 8:  race2= 'U';
+   
+   break;
+
+  default:
+
+  break;
+   } 
 this.raceArray.shift;
- this.raceArray.push(player1score,player2score);
+ this.raceArray.push(race1,player1score,player2score, race2);
  console.log(this.raceArray)
 
 
