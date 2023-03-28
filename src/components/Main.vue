@@ -6,10 +6,10 @@ export default{
   data() {
     return {
      player1:{
-      tag:"",
+      tag:"iNSUPERABLE#11842",
      },
      player2:{
-      tag:"",
+      tag:"РозовыйПони#228941",
      },
      tagReturn:[],
      tagReturn2:[],
@@ -111,7 +111,6 @@ this.tagReturn2 =  dataTag2;
 async showRivalry () {
    
 
-
   for(let i=2; i<15; i++) {
 /* this.urlGames1 = `https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=0&offset=0&pageSize=100&season=${i}&gamemode=1` */
  
@@ -171,9 +170,9 @@ this.score2=0;
 },
 
 
-async showRivalryByRaces (race1:any,race2:any,var1:any, var2:any) {
+async showRivalryByRaces (race1:any,race2:any) {
    
-let player1score=0;
+let player1score:any=0;
 let player2score=0;
    for(let i=2; i<15; i++) {
   
@@ -231,6 +230,8 @@ let player2score=0;
 
  }
 
+
+
  switch (race1) {
     case 0:  race1= 'R';
    
@@ -283,6 +284,8 @@ let player2score=0;
   break;
    } 
 
+
+   //count winrate
    let percent1:any=0;
    let percent2:any=0;
 
@@ -290,46 +293,88 @@ let player2score=0;
    percent1 = Math.round((100 * player1score)/ (player1score + player2score))+'%';
    percent2 = Math.round((100 * player2score)/ (player1score + player2score))+'%';
    }
+
+   else {
+    percent1=0+'%';
+    percent2=0+'%';
+   }
+
+  
+
 this.raceArray.shift;
- this.raceArray.push(percent1,race1,player1score,player2score, race2, percent2);
- console.log(this.raceArray)
+ this.raceArray.push(race1,percent1,player1score,player2score,percent2, race2);
+
+//from big array to smallest arrays 6size
+function sliceIntoChunks(arr:any, chunkSize:any) {
+    const res = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+        const chunk = arr.slice(i, i + chunkSize);
+        res.push(chunk);
+    }
+    return res;
+}
+
+this.raceArray1 = sliceIntoChunks(this.raceArray, 6);
+
+
+//sort array
+
+this.raceArray1.sort();
+
+// split array to 5 arrays
+this.raceArray1=sliceIntoChunks(this.raceArray1, 5);
+
+console.log(this.raceArray1);
+
+
+//sort array
+
+
+/*  console.log(this.raceArray) */
 
 
 
 },
 showAll (){
-  this.showRivalryByRaces (this.orc,this.human, this.scoreOH1,this.scoreOH2)
-  this.showRivalryByRaces (this.orc,this.orc,this.scoreOO1,this.scoreOO2)
-  this.showRivalryByRaces (this.orc,this.elf,this.scoreOE1,this.scoreOE2)
-  this.showRivalryByRaces (this.orc,this.undead, this.scoreOU1,this.scoreOU2)
-  this.showRivalryByRaces (this.orc,this.rnd,this.scoreOR1,this.scoreOR2 )
-  this.showRivalryByRaces (this.human,this.human, this.scoreHH1,this.scoreHH2 )
-  this.showRivalryByRaces (this.human,this.orc, this.scoreHO1,this.scoreHO2)
-  this.showRivalryByRaces (this.human,this.elf, this.scoreHE1,this.scoreHE2)
-  this.showRivalryByRaces (this.human,this.undead, this.scoreHU1,this.scoreHU2)
-  this.showRivalryByRaces (this.human,this.rnd, this.scoreHR1,this.scoreHR2)
-  this.showRivalryByRaces (this.elf,this.human, this.scoreEH1,this.scoreEH2)
-  this.showRivalryByRaces (this.elf,this.orc,this.scoreEO1,this.scoreEO2)
-  this.showRivalryByRaces (this.elf,this.elf, this.scoreEE1,this.scoreEE2)
-  this.showRivalryByRaces (this.elf,this.undead, this.scoreEU1,this.scoreEU2)
-  this.showRivalryByRaces (this.elf,this.rnd, this.scoreER1,this.scoreER2)
-  this.showRivalryByRaces (this.undead,this.human, this.scoreUH1, this.scoreUH2)
-  this.showRivalryByRaces (this.undead,this.orc, this.scoreUO1, this.scoreUO2)
-  this.showRivalryByRaces (this.undead,this.elf, this.scoreUE1, this.scoreUE2)
-  this.showRivalryByRaces (this.undead,this.undead, this.scoreUU1, this.scoreUU2)
-  this.showRivalryByRaces (this.undead,this.rnd, this.scoreUR1, this.scoreUR2)
-  this.showRivalryByRaces (this.rnd,this.human, this.scoreRH1, this.scoreRH2)
-  this.showRivalryByRaces (this.rnd,this.orc, this.scoreRO1, this.scoreRO2)
-  this.showRivalryByRaces (this.rnd,this.elf, this.scoreRE1, this.scoreRE2)
-  this.showRivalryByRaces (this.rnd,this.undead, this.scoreRU1, this.scoreRU2)
-  this.showRivalryByRaces (this.rnd,this.rnd, this.scoreRR1, this.scoreRR2)
+  this.showRivalryByRaces (this.orc,this.human)
+  this.showRivalryByRaces (this.orc,this.orc)
+  this.showRivalryByRaces (this.orc,this.elf)
+  this.showRivalryByRaces (this.orc,this.undead)
+  this.showRivalryByRaces (this.orc,this.rnd)
+  this.showRivalryByRaces (this.human,this.human)
+  this.showRivalryByRaces (this.human,this.orc)
+  this.showRivalryByRaces (this.human,this.elf)
+  this.showRivalryByRaces (this.human,this.undead)
+  this.showRivalryByRaces (this.human,this.rnd)
+  this.showRivalryByRaces (this.elf,this.human)
+  this.showRivalryByRaces (this.elf,this.orc)
+  this.showRivalryByRaces (this.elf,this.elf)
+  this.showRivalryByRaces (this.elf,this.undead)
+  this.showRivalryByRaces (this.elf,this.rnd)
+  this.showRivalryByRaces (this.undead,this.human)
+  this.showRivalryByRaces (this.undead,this.orc)
+  this.showRivalryByRaces (this.undead,this.elf)
+  this.showRivalryByRaces (this.undead,this.undead)
+  this.showRivalryByRaces (this.undead,this.rnd)
+  this.showRivalryByRaces (this.rnd,this.human)
+  this.showRivalryByRaces (this.rnd,this.orc)
+  this.showRivalryByRaces (this.rnd,this.elf)
+  this.showRivalryByRaces (this.rnd,this.undead)
+  this.showRivalryByRaces (this.rnd,this.rnd)
 /* console.log(this.scoreOH1,this.scoreOH2,this.scoreOO1,this.scoreOO2,this.scoreOE1,this.scoreOE2,this.scoreOU1,this.scoreOU2,this.scoreOR1,this.scoreOR2,this.scoreUR1, this.scoreUR2,this.scoreUU1, this.scoreUU2,this.scoreUE1, this.scoreUE2, this.scoreUO1, this.scoreUO2,this.scoreUH1, this.scoreUH2 ) */
  
   this.raceArray=[];
-}
+},
+showPanel() {
+  let results = document.querySelector('.results');
+  console.log(results);
+  results?.classList.add('active');
+
+},
 
 
-}
+},
+
 }
 
 
@@ -357,9 +402,9 @@ showAll (){
 
 
 
-   <button class="button-show button" v-on:click="showRivalry(); showAll()"> Show</button>
+   <button class="button-show button" v-on:click="showRivalry(); showAll(); showPanel();"> Show</button>
    <div class="results">
-      <div class="all-result">
+      <div class="big-result">
         <span class="winrate1 big-letter"></span>
         <span class="name-player1 big-letter"></span>
         <span class="score-player1 big-letter"></span>
@@ -368,6 +413,32 @@ showAll (){
         <span class="name-player2 big-letter"></span>
         <span class="winrate2 big-letter"></span>
       </div>
+      <div class="all-results">
+        <div class='matchup' v-for="bigItem in raceArray1"> 
+  <div class='all-score' v-for="item in bigItem">
+        <span class="left-column">
+         <span class="info percent-column-left">{{item[1]}}</span> 
+         <span class="info race-column">{{item[0]}}</span> 
+         <span class="info ">{{item[2]}}</span>
+        </span>
+         <span class="colon">:</span>
+         <span class="right-column">
+          <span class="info">{{item[3]}}</span>
+          <span class="race-column info">{{item[5]}}</span>
+          <span class="info percent-column-right">{{item[4]}}</span>
+        </span>
+        </div>
+       </div>
+             
+
+
+
+
+
+      </div>
+
+
+
    </div>
 
   </div>
@@ -471,10 +542,95 @@ showAll (){
               color:rgb(108, 0, 151);
               font-size: 35px;
               text-shadow: 1px 1px 1px rgb(255, 255, 255);
+              margin: auto;
               
             }
-            .all-result{
+
+            .score-player2{
+              border: 1px solid rgb(108, 0, 151);
+              background-color: white;
+           
+            }
+
+            .score-player1{
+              border: 1px solid rgb(108, 0, 151);
+              background-color: white;
+            }
+
+
+            .results{
+            display: none;
+            }
+            .active{
+            display: block;
+            }
+            .big-result{
               display: flex;
               gap:15px;
+              
             }
+
+
+            .all-results{
+              display: flex;
+              flex-direction: row;
+              gap:10px;
+              position: relative;
+              top:25%;
+            }
+            .matchup{
+              display: flex;
+              background-color: brown;
+              flex-wrap: wrap;
+              flex-direction: column;
+              width:200px;
+              gap:5px;
+              
+            }
+
+            .all-score{
+              display: flex;
+              gap:5px;
+             
+             
+            }
+
+            .colon{
+                margin: auto;
+            }
+
+            .info{
+              background-color: blueviolet;
+              
+            }
+            .left-column{
+             
+              background-color: blue;
+              width:90px;
+              
+              
+
+            }
+
+            .right-column{
+
+              background-color: blue;
+              width:90px;
+             
+              
+              
+            }
+
+            .percent-column-right{
+              position: relative;
+              width: 20px;
+              margin-right: 0;
+            
+            }
+/*             .race-column{
+              margin: auto;
+
+            } */
+
+
 </style>
