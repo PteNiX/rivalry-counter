@@ -25,59 +25,7 @@ export default{
      undead:8,
      rnd:0,
      player1score:0,
-     player2score:0,
-
-     scoreHO1:0,
-     scoreHO2:0,
-     scoreHH1:0,
-     scoreHH2:0,
-     scoreHU1:0,
-     scoreHU2:0,
-     scoreHE1:0,
-     scoreHE2:0,
-     scoreHR1:0,
-     scoreHR2:0,
-     scoreOH1:0,
-     scoreOH2:0,
-     scoreOO1:0,
-     scoreOO2:0,
-     scoreOU1:0,
-     scoreOU2:0,
-     scoreOE1:0,
-     scoreOE2:0,
-     scoreOR1:0,
-     scoreOR2:0,
-     scoreEO1:0,
-     scoreEO2:0,
-     scoreEH1:0,
-     scoreEH2:0,
-     scoreEU1:0,
-     scoreEU2:0,
-     scoreEE1:0,
-     scoreEE2:0,
-     scoreER1:0,
-     scoreER2:0,
-     scoreUO1:0,
-     scoreUO2:0,
-     scoreUH1:0,
-     scoreUH2:0,
-     scoreUE1:0,
-     scoreUE2:0,
-     scoreUU1:0,
-     scoreUU2:0,
-     scoreUR1:0,
-     scoreUR2:0,
-     scoreRO1:0,
-     scoreRO2:0,
-     scoreRH1:0,
-     scoreRH2:0,
-     scoreRU1:0,
-     scoreRU2:0,
-     scoreRE1:0,
-     scoreRE2:0,
-     scoreRR1:0,
-     scoreRR2:0,
-
+     player2score:0, 
      raceArray:[1],
      raceArray1:[1],
   }
@@ -417,15 +365,15 @@ showPanel() {
         <div class='matchup' v-for="bigItem in raceArray1"> 
   <div class='all-score' v-for="item in bigItem">
         <span class="left-column">
-         <span class="info percent-column-left">{{item[1]}}</span> 
+         <span class="info percent-column">{{item[1]}}</span> 
          <span class="info race-column">{{item[0]}}</span> 
-         <span class="info ">{{item[2]}}</span>
+         <span class="info score-column">{{item[2]}}</span>
         </span>
          <span class="colon">:</span>
          <span class="right-column">
-          <span class="info">{{item[3]}}</span>
+          <span class="info score-column">{{item[3]}}</span>
           <span class="race-column info">{{item[5]}}</span>
-          <span class="info percent-column-right">{{item[4]}}</span>
+          <span class="info percent-column">{{item[4]}}</span>
         </span>
         </div>
        </div>
@@ -492,6 +440,7 @@ showPanel() {
                 border-radius: 0.25em;
                 padding: 0.25em 0.5em;
                 font-size: 1rem;
+                
                
 
 
@@ -547,14 +496,14 @@ showPanel() {
             }
 
             .score-player2{
-              border: 1px solid rgb(108, 0, 151);
-              background-color: white;
+              
+              
            
             }
 
             .score-player1{
-              border: 1px solid rgb(108, 0, 151);
-              background-color: white;
+              
+      
             }
 
 
@@ -563,10 +512,13 @@ showPanel() {
             }
             .active{
             display: block;
+            width: 95%;
+          
             }
             .big-result{
               display: flex;
               gap:15px;
+              background-color: rgba(255, 255, 255, 0.452);
               
             }
 
@@ -577,13 +529,17 @@ showPanel() {
               gap:10px;
               position: relative;
               top:25%;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              
             }
             .matchup{
               display: flex;
-              background-color: brown;
+              background-color: rgba(255, 255, 255, 0.452);
               flex-wrap: wrap;
               flex-direction: column;
-              width:200px;
+              width:210px;
+              font-size: 20px;
               gap:5px;
               
             }
@@ -600,37 +556,43 @@ showPanel() {
             }
 
             .info{
-              background-color: blueviolet;
+              color:rgb(108, 0, 151);
               
             }
             .left-column{
+              display: flex;
              
-              background-color: blue;
               width:90px;
-              
+              justify-content: space-between;
               
 
             }
 
             .right-column{
-
-              background-color: blue;
+              display: flex;
+              
               width:90px;
-             
+              justify-content: space-between;
+              
               
               
             }
 
-            .percent-column-right{
+            .percent-column{
               position: relative;
-              width: 20px;
-              margin-right: 0;
-            
+              width: 47px;
+              text-align: center;
+             /*  background-color: green; */
+              
             }
-/*             .race-column{
-              margin: auto;
 
-            } */
+
+            
+            .score-column {
+             /*  background-color: yellow; */
+              width:18px;
+              text-align: center;
+            }
 
 
 </style>
