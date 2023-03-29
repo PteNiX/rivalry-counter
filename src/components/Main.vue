@@ -112,6 +112,11 @@ if((this.score1 +this.score2)!=0) {
 winrate1.innerHTML =  Math.round((100*this.score1)/ (this.score1 +this.score2)) +'%';
 winrate2.innerHTML =  Math.round((100*this.score2)/ (this.score1 +this.score2)) + '%';
 }
+
+else{
+  winrate1.innerHTML=0+'%';
+  winrate2.innerHTML=0+'%';
+}
 this.score1=0;
 this.score2=0;
 /*   console.log(this.score1, this.score2); */
@@ -171,17 +176,12 @@ let player2score=0;
    }
 
  
-
-
-  /* console.log(this.scoreOH1,this.scoreOH2,this.scoreOO1,this.scoreOO2,this.scoreOE1,this.scoreOE2,this.scoreOU1,this.scoreOU2,this.scoreOR1,this.scoreOR2,this.scoreUR1, this.scoreUR2,this.scoreUU1, this.scoreUU2,this.scoreUE1, this.scoreUE2, this.scoreUO1, this.scoreUO2,this.scoreUH1, this.scoreUH2 ) */
-  /*  this.raceArray=raceArray; */
-
  }
 
 
 
  switch (race1) {
-    case 0:  race1= 'R';
+    case 0:  race1= 'XR';
    
     break;
 
@@ -207,7 +207,7 @@ let player2score=0;
    } 
 
    switch (race2) {
-    case 0:  race2= 'R';
+    case 0:  race2= 'XR';
    
     break;
 
@@ -250,8 +250,10 @@ let player2score=0;
   
 
 this.raceArray.shift;
- this.raceArray.push(race1,percent1,player1score,player2score,percent2, race2);
 
+if(player1score!=0 || player2score!=0){
+ this.raceArray.push(race1,percent1,player1score,player2score,percent2, race2);
+}
 //from big array to smallest arrays 6size
 function sliceIntoChunks(arr:any, chunkSize:any) {
     const res = [];
@@ -262,17 +264,18 @@ function sliceIntoChunks(arr:any, chunkSize:any) {
     return res;
 }
 
+
+
 this.raceArray1 = sliceIntoChunks(this.raceArray, 6);
-
-
 //sort array
 
 this.raceArray1.sort();
 
 // split array to 5 arrays
+
 this.raceArray1=sliceIntoChunks(this.raceArray1, 5);
 
-console.log(this.raceArray1);
+/* console.log(this.raceArray1); */
 
 
 //sort array
@@ -283,7 +286,34 @@ console.log(this.raceArray1);
 
 
 },
-showAll (){
+changeIcons (){
+
+  console.log('callback')
+let icons=document.querySelectorAll('.race-column');
+icons.forEach(element => {
+
+  if(element.innerHTML=="H"){
+    element.innerHTML = `<img src="src/assets/images/icons/human_icon_small.png">`;
+  }
+  if(element.innerHTML=="O"){
+    element.innerHTML = `<img src="src/assets/images/icons/orc_icon_small.png">`;
+  }
+  if(element.innerHTML=="U"){
+    element.innerHTML = `<img src="src/assets/images/icons/undead_icon_small.png">`;
+  }
+  if(element.innerHTML=="N"){
+    element.innerHTML = `<img src="src/assets/images/icons/nightelf_icon_small.png">`;
+  }
+  if(element.innerHTML=="XR"){
+    element.innerHTML = `<img src="src/assets/images/icons/random_icon_small.png">`;
+  } 
+    
+}
+);
+
+
+},
+showAll (callback){
   this.showRivalryByRaces (this.orc,this.human)
   this.showRivalryByRaces (this.orc,this.orc)
   this.showRivalryByRaces (this.orc,this.elf)
@@ -309,13 +339,14 @@ showAll (){
   this.showRivalryByRaces (this.rnd,this.elf)
   this.showRivalryByRaces (this.rnd,this.undead)
   this.showRivalryByRaces (this.rnd,this.rnd)
-/* console.log(this.scoreOH1,this.scoreOH2,this.scoreOO1,this.scoreOO2,this.scoreOE1,this.scoreOE2,this.scoreOU1,this.scoreOU2,this.scoreOR1,this.scoreOR2,this.scoreUR1, this.scoreUR2,this.scoreUU1, this.scoreUU2,this.scoreUE1, this.scoreUE2, this.scoreUO1, this.scoreUO2,this.scoreUH1, this.scoreUH2 ) */
  
+  setTimeout(callback, 7000);
+
   this.raceArray=[];
 },
 showPanel() {
   let results = document.querySelector('.results');
-  console.log(results);
+
   results?.classList.add('active');
 
 },
@@ -350,7 +381,8 @@ showPanel() {
 
 
 
-   <button class="button-show button" v-on:click="showRivalry(); showAll(); showPanel();"> Show</button>
+   <button class="button-show button" v-on:click="showRivalry(); showAll(changeIcons); showPanel();"> Show</button>
+ <!--   <button v-on:click="changeIcons()">test</button> -->
    <div class="results">
       <div class="big-result">
         <span class="winrate1 big-letter"></span>
@@ -376,13 +408,7 @@ showPanel() {
           <span class="info percent-column">{{item[4]}}</span>
         </span>
         </div>
-       </div>
-             
-
-
-
-
-
+       </div>          
       </div>
 
 
@@ -495,7 +521,7 @@ showPanel() {
               
             }
 
-            .score-player2{
+/*             .score-player2{
               
               
            
@@ -504,7 +530,7 @@ showPanel() {
             .score-player1{
               
       
-            }
+            } */
 
 
             .results{
@@ -519,7 +545,7 @@ showPanel() {
               display: flex;
               gap:15px;
               background-color: rgba(255, 255, 255, 0.452);
-              
+              flex-wrap: wrap;
             }
 
 
@@ -530,7 +556,7 @@ showPanel() {
               position: relative;
               top:25%;
               flex-wrap: wrap;
-              justify-content: space-between;
+              justify-content: space-around;
               
             }
             .matchup{
@@ -593,6 +619,82 @@ showPanel() {
               width:18px;
               text-align: center;
             }
+
+            @media (min-width: 650px) and (max-width: 870px) {
+              .big-letter{
+              
+              font-size: 25px;
+            }
+
+
+            }
+
+            @media (min-width: 550px) and (max-width: 649px) {
+              .big-letter{
+              
+              font-size: 20px;
+            }
+            }
+
+            @media (min-width: 400px) and (max-width: 549px) {
+              .big-letter{
+              
+              font-size: 20px;
+            }
+            .big-result{
+              display: flex;
+              gap:1px;
+            }
+            .winrate1{
+             display: none;
+        
+            }
+
+            .winrate2{
+              display: none;
+            }
+
+            .all-results{
+
+              top:15%;
+
+              }
+            }
+            @media (max-width: 399px) {
+              .big-letter{
+              
+              font-size: 17px;
+            }
+            .big-result{
+              display: flex;
+              gap:1px;
+            }
+            .winrate1{
+             display: none;
+        
+            }
+
+            .winrate2{
+              display: none;
+            }
+
+            .score-player1{
+              font-size: 20px;
+             
+            }
+
+            .score-player2{
+              font-size: 20px;
+            }
+
+            .all-results{
+
+              top:5%;
+
+              }
+            
+            }
+
 
 
 </style>
