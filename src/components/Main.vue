@@ -60,7 +60,6 @@ async showRivalry () {
    
 
   for(let i=2; i<15; i++) {
-/* this.urlGames1 = `https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=0&offset=0&pageSize=100&season=${i}&gamemode=1` */
  
 this.urlGames1 =`https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=20&offset=0&opponentId=${this.player2.tag.trim().replace('#', '%23')}&pageSize=50&season=${i}&gamemode=1`;
 
@@ -151,7 +150,6 @@ let player2score=0;
        dataScore.matches[i].teams[0].won == false &&
        dataScore.matches[i].teams[0].players[0].race == `${race1}` &&
        dataScore.matches[i].teams[1].players[0].race == `${race2}`
-
        ){
         player2score++;
        }
@@ -170,15 +168,11 @@ let player2score=0;
        dataScore.matches[i].teams[1].players[0].race == `${race1}`){
         player2score++;
         
-       }
-
-      
+       }     
    }
 
  
  }
-
-
 
  switch (race1) {
     case 0:  race1= 'XR';
@@ -246,9 +240,7 @@ let player2score=0;
     percent1=0+'%';
     percent2=0+'%';
    }
-
-  
-
+ 
 this.raceArray.shift;
 
 if(player1score!=0 || player2score!=0){
@@ -350,9 +342,17 @@ showPanel() {
   results?.classList.add('active');
 
 },
-
+ changeInput (){
+  let player1 = this.player1.tag;
+  let player2 = this.player2.tag;
+  this.player1.tag= player2;
+  this.player2.tag= player1;
 
 },
+
+},
+
+
 
 }
 
@@ -376,8 +376,7 @@ showPanel() {
     <datalist id="player2" class="tag2" >
     <option v-for="tag2 in tagReturn2"> {{tag2.battleTag}} </option>
    </datalist>
-   
-   <br>
+   <div class="arrows" v-on:click="changeInput()"></div>
 
 
 
@@ -450,10 +449,9 @@ showPanel() {
         display: flex;
         flex-direction: column;
         top:-1.5rem;
-        
         align-items: center;
         gap:0.5rem;
-        z-index: 3;
+      
        }
 
 
@@ -466,29 +464,35 @@ showPanel() {
                 border-radius: 0.25em;
                 padding: 0.25em 0.5em;
                 font-size: 1rem;
-                
-               
 
-
-/*                 @media (min-width: 450px) and (max-width: 750px) {
-                    height: 1rem;
-                    width: 9rem;
-                    min-width: 10ch;
-                }
-                @media (max-width: 450px) {
-                    min-width: 8ch;
-                    height: 1rem;
-                    width: 8rem;
-                } */
             }
 
+            .arrows{
+              position: relative;
+              width:30px;
+              height: 30px;
+              cursor: pointer;
+              top:-55px;
+              left: 130px;
+              background-image: url(../assets/images/arrows.png);
+              background-size:cover;
+                                      
+            }
+
+            .arrows:hover{
+              background-image: url(../assets/images/arrows_hover.png);
+            
+            }
 .input:hover{
                     border-color: rgb(108, 0, 151);
                     box-shadow: 0 0 15px rgb(108, 0, 151);
+                    
                     }
 
   .button{
+
             position: relative;
+            top:-20px;
             width:4.5rem;
             height: 2rem;
             background-color:rgb(108, 0, 151);
@@ -505,7 +509,7 @@ showPanel() {
 
   .button:hover{
                 background-color:rgb(108, 0, 151);
-                box-shadow: 0 0 15px rgb(255, 215, 0);
+                box-shadow: 0 0 15px rgb(241, 241, 241);
             }
 
             .button:active {
