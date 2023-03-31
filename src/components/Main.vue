@@ -310,7 +310,6 @@ icons.forEach(element => {
 },
 showAll (){
 
-
   this.showRivalryByRaces (this.orc,this.human)
   this.showRivalryByRaces (this.orc,this.orc)
   this.showRivalryByRaces (this.orc,this.elf)
@@ -337,9 +336,6 @@ showAll (){
   this.showRivalryByRaces (this.rnd,this.undead)
   this.showRivalryByRaces (this.rnd,this.rnd)
  
-
-
-
   this.raceArray=[];
 },
 showPanel() {
@@ -360,9 +356,7 @@ showPanel() {
 },
 
 
-
 }
-
 
 
 </script>
