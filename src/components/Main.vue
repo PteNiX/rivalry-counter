@@ -246,6 +246,7 @@ this.raceArray.shift;
 if(player1score!=0 || player2score!=0){
  this.raceArray.push(race1,percent1,player1score,player2score,percent2, race2);
 }
+
 //from big array to smallest arrays 6size
 function sliceIntoChunks(arr:any, chunkSize:any) {
     const res = [];
@@ -269,18 +270,20 @@ this.raceArray1=sliceIntoChunks(this.raceArray1, 5);
 
 /* console.log(this.raceArray1); */
 
+setTimeout(() => {
+  this.changeIcons();
+}, 1000);
 
-//sort array
-
-
-/*  console.log(this.raceArray) */
 
 
 
 },
 changeIcons (){
 
+
+ 
   console.log('callback')
+  
 let icons=document.querySelectorAll('.race-column');
 icons.forEach(element => {
 
@@ -305,7 +308,9 @@ icons.forEach(element => {
 
 
 },
-showAll (callback){
+showAll (){
+
+
   this.showRivalryByRaces (this.orc,this.human)
   this.showRivalryByRaces (this.orc,this.orc)
   this.showRivalryByRaces (this.orc,this.elf)
@@ -332,7 +337,8 @@ showAll (callback){
   this.showRivalryByRaces (this.rnd,this.undead)
   this.showRivalryByRaces (this.rnd,this.rnd)
  
-  setTimeout(callback, 7000);
+
+
 
   this.raceArray=[];
 },
@@ -349,6 +355,16 @@ showPanel() {
   this.player2.tag= player1;
 
 },
+last(){
+    let b = new Promise(function(resolve,reject){
+    this.showAll();
+  })
+
+  b.then(this.showPanel);
+
+ setTimeout(this.showPanel, 1000);
+}
+
 
 },
 
@@ -380,8 +396,8 @@ showPanel() {
 
 
 
-   <button class="button-show button" v-on:click="showRivalry(); showAll(changeIcons); showPanel();"> Show</button>
- <!--   <button v-on:click="changeIcons()">test</button> -->
+   <button class="button-show button" v-on:click="showRivalry(); showAll();/*  showPanel(); */"> Show</button>
+
    <div class="results">
       <div class="big-result">
         <span class="winrate1 big-letter"></span>
@@ -696,8 +712,14 @@ showPanel() {
               top:5%;
 
               }
-            
+              .arrows{
+                top:-50px;
+              width: 25px;
+              height: 25px;
+              left: 125px;
             }
+            }
+
 
 
 
