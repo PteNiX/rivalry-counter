@@ -370,12 +370,12 @@ showPanel() {
 
     <input class="input-player1 input" type='text' v-model="player1.tag" list="player1" v-on:input="urlFunctionPlayer1()">
     <datalist id="player1" class="tag" >
-    <option v-for="tag in tagReturn"> {{tag.battleTag}} </option>
+    <option v-for="tag in tagReturn" v-bind:key="tag"> {{tag.battleTag}} </option>
    </datalist>
 
     <input class="input-player2 input" type='text' v-model="player2.tag" list="player2" v-on:input="urlFunctionPlayer2()">
     <datalist id="player2" class="tag2" >
-    <option v-for="tag2 in tagReturn2"> {{tag2.battleTag}} </option>
+    <option v-for="tag2 in tagReturn2" v-bind:key="tag2"> {{tag2.battleTag}} </option>
    </datalist>
    <div class="arrows" v-on:click="changeInput()"></div>
 
@@ -394,10 +394,10 @@ showPanel() {
         <span class="winrate2 big-letter"></span>
       </div>
       <div class="all-results">
-        <div class='matchup' v-for="bigItem in raceArray1"> 
-  <div class='all-score' v-for="item in bigItem">
+        <div class='matchup' v-for="bigItem in raceArray1" v-bind:key="bigItem"> 
+  <div class='all-score' v-for="item in bigItem" v-bind:key="item">
         <span class="left-column">
-         <span class="info percent-column">{{item[1]}}</span> 
+         <span class="info percent-column">{{item[1] }}</span> 
          <span class="info race-column">{{item[0]}}</span> 
          <span class="info score-column">{{item[2]}}</span>
         </span>
