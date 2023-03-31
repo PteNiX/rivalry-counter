@@ -355,15 +355,6 @@ showPanel() {
   this.player2.tag= player1;
 
 },
-last(){
-    let b = new Promise(function(resolve,reject){
-    this.showAll();
-  })
-
-  b.then(this.showPanel);
-
- setTimeout(this.showPanel, 1000);
-}
 
 
 },
@@ -396,7 +387,7 @@ last(){
 
 
 
-   <button class="button-show button" v-on:click="showRivalry(); showAll();/*  showPanel(); */"> Show</button>
+   <button class="button-show button" v-on:click="showRivalry(); showAll(); showPanel();"> Show</button>
 
    <div class="results">
       <div class="big-result">
