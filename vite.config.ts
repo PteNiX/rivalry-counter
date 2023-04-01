@@ -14,5 +14,3 @@ export default defineConfig({
   }
 })
 
-//rivalry-counter/
-//./src

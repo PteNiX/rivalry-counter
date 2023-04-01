@@ -288,19 +288,19 @@ let icons=document.querySelectorAll('.race-column');
 icons.forEach(element => {
 
   if(element.innerHTML=="H"){
-    element.innerHTML = `<img src="/rivalry-counter/src/assets/images/icons/human_icon_small.png">`;
+    element.innerHTML = `<img src="../assets/images/icons/human_icon_small.png" alt="human"">`;
   }
   if(element.innerHTML=="O"){
-    element.innerHTML = `<img src="src/assets/images/icons/orc_icon_small.png">`;
+    element.innerHTML = `<img src="src/assets/images/icons/orc_icon_small.png" alt="orc">`;
   }
   if(element.innerHTML=="U"){
-    element.innerHTML = `<img src="src/assets/images/icons/undead_icon_small.png">`;
+    element.innerHTML = `<img src="src/assets/images/icons/undead_icon_small.png" alt="undead">`;
   }
   if(element.innerHTML=="N"){
-    element.innerHTML = `<img src="src/assets/images/icons/nightelf_icon_small.png">`;
+    element.innerHTML = `<img src="src/assets/images/icons/nightelf_icon_small.png" alt="elf">`;
   }
   if(element.innerHTML=="XR"){
-    element.innerHTML = `<img src="src/assets/images/icons/random_icon_small.png">`;
+    element.innerHTML = `<img src="src/assets/images/icons/random_icon_small.png" alt="random">`;
   } 
     
 }
