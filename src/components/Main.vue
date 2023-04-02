@@ -293,16 +293,16 @@ icons.forEach(element => {
     element.innerHTML = `<img src="../assets/images/icons/human-icon-small.svg" alt="h">`;
   }
   if(element.innerHTML=="O"){
-    element.innerHTML = `<img src="./src/assets/images/icons/orc-icon-small.svg" alt="o">`;
+    element.innerHTML = `<img src="./assets/images/icons/orc-icon-small.svg" alt="o">`;
   }
   if(element.innerHTML=="U"){
-    element.innerHTML = `<img src="./src/assets/images/icons/undead-icon-small.svg" alt="u">`;
+    element.innerHTML = `<img src="/assets/images/icons/undead-icon-small.svg" alt="u">`;
   }
   if(element.innerHTML=="N"){
     element.innerHTML = `<img src="./src/assets/images/icons/nightelf-icon-small.svg" alt="e">`;
   }
   if(element.innerHTML=="XR"){
-    element.innerHTML = `<img src="./src/assets/images/icons/random-icon-small.svg" alt="r">`;
+    element.innerHTML = `<img src="/src/assets/images/icons/random-icon-small.svg" alt="r">`;
   } 
     
 }
