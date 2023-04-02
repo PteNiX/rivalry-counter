@@ -290,7 +290,7 @@ let icons=document.querySelectorAll('.race-column');
 icons.forEach(element => {
 
   if(element.innerHTML=="H"){
-    element.innerHTML = `<img src="./src/assets/images/icons/human-icon-small.svg" alt="h">`;
+    element.innerHTML = `<img src="../assets/images/icons/human-icon-small.svg" alt="h">`;
   }
   if(element.innerHTML=="O"){
     element.innerHTML = `<img src="./src/assets/images/icons/orc-icon-small.svg" alt="o">`;
