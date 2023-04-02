@@ -37,6 +37,9 @@ export default{
   }
 
 },   
+mounted() {
+    this.changeIcons();
+  },
 methods: {
 
 
@@ -295,7 +298,7 @@ let icons=document.querySelectorAll('.race-column');
 icons.forEach(element => {
 
   if(element.innerHTML=="H"){
-    element.innerHTML = `<img : src="./assets/images/icons/human-icon-small.svg" >`;
+    element.innerHTML = `<img : src=< img:src="./assets/images/icons/orc-icon-small.svg">`;
   }
   if(element.innerHTML=="O"){
     element.innerHTML = `<img : src="../assets/images/icons/orc-icon-small.svg">`;
@@ -384,7 +387,7 @@ showPanel() {
     <option v-for="tag in tagReturn" v-bind:key="tag"> {{tag.battleTag}} </option>
    </datalist>
    
-<!--    <img  class="test1" src="../assets/images/icons/orc-icon-small.svg" alt="o">
+<!--    <img  class="test1" src={this.iconO} alt="o">
    <img  class="test1" src="../assets/images/icons/human-icon-small.svg" alt="h">
    <img  class="test1" src="../assets/images/icons/undead-icon-small.svg" alt="u">
    <img  class="test1" src="../assets/images/icons/nightelf-icon-small.svg" alt="e">
