@@ -309,10 +309,10 @@ icons.forEach(element => {
     element.innerHTML = `<img : src='/src/assets/images/icons/orc-icon-small.svg' />`;
   }
   if(element.innerHTML=="U"){
-    element.innerHTML = `<img : src="/public/undead-icon-small.svg" />`;
+    element.innerHTML = `<img : src="/public/nightelf-icon-small.svg" />`;
   }
   if(element.innerHTML=="N"){
-    element.innerHTML = `<img : src="/undead-icon-small.svg" />`;
+    element.innerHTML = `<img : src="undead-icon-small.svg" />`;
   }
   if(element.innerHTML=="XR"){
     element.innerHTML = `<img : src=require("/src/assets/images/icons/random-icon-small.svg")/>`;
