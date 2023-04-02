@@ -303,19 +303,19 @@ let icons=document.querySelectorAll('.race-column');
 icons.forEach(element => {
 
   if(element.innerHTML=="H"){
-    element.innerHTML = `<img : src='require("../assets/images/icons/human-icon-small.svg" /)'>`;
+    element.innerHTML = "<img : src='human-icon-small.svg' />";
   }
   if(element.innerHTML=="O"){
-    element.innerHTML = `<img : src='/src/assets/images/icons/orc-icon-small.svg' />`;
+    element.innerHTML = `<img : src='orc-icon-small.svg' />`;
   }
   if(element.innerHTML=="U"){
-    element.innerHTML = `<img : src="/public/nightelf-icon-small.svg" />`;
-  }
-  if(element.innerHTML=="N"){
     element.innerHTML = `<img : src="undead-icon-small.svg" />`;
   }
+  if(element.innerHTML=="N"){
+    element.innerHTML = `<img : src="nightelf-icon-small.svg" />`;
+  }
   if(element.innerHTML=="XR"){
-    element.innerHTML = `<img : src=require("/src/assets/images/icons/random-icon-small.svg")/>`;
+    element.innerHTML = `<img : src="random-icon-small.svg">`;
   } 
     
 }
