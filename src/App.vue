@@ -6,6 +6,7 @@ import Footer from './components/Footer.vue'
 
 <template>
 
+
       <Main />
       <Footer />
 
@@ -19,5 +20,6 @@ import Footer from './components/Footer.vue'
 </template>
 
 <style scoped>
+
 
 </style>

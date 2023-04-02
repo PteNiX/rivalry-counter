@@ -2,7 +2,9 @@
 <script lang="ts">
 
 
+
 export default{
+
   data() {
     return {
      player1:{
@@ -288,19 +290,19 @@ let icons=document.querySelectorAll('.race-column');
 icons.forEach(element => {
 
   if(element.innerHTML=="H"){
-    element.innerHTML = `<img src="../assets/images/icons/human_icon_small.png" alt="human"">`;
+    element.innerHTML = `<img src="/src/assets/images/icons/human-icon-small.svg" alt="human">`;
   }
   if(element.innerHTML=="O"){
-    element.innerHTML = `<img src="src/assets/images/icons/orc_icon_small.png" alt="orc">`;
+    element.innerHTML = `<img src="/src/assets/images/icons/orc-icon-small.svg" alt="orc">`;
   }
   if(element.innerHTML=="U"){
-    element.innerHTML = `<img src="src/assets/images/icons/undead_icon_small.png" alt="undead">`;
+    element.innerHTML = `<img src="/src/assets/images/icons/undead-icon-small.svg" alt="undead">`;
   }
   if(element.innerHTML=="N"){
-    element.innerHTML = `<img src="src/assets/images/icons/nightelf_icon_small.png" alt="elf">`;
+    element.innerHTML = `<img src="/src/assets/images/icons/nightelf-icon-small.svg" alt="elf">`;
   }
   if(element.innerHTML=="XR"){
-    element.innerHTML = `<img src="src/assets/images/icons/random_icon_small.png" alt="random">`;
+    element.innerHTML = `<img src="/src/assets/images/icons/random-icon-small.svg" alt="random">`;
   } 
     
 }
@@ -366,12 +368,20 @@ showPanel() {
   
   <div class="container">
     <div class="title"> W3Champions Rivalry Counter </div>
+    
     <div class="form">
 
     <input class="input-player1 input" type='text' v-model="player1.tag" list="player1" v-on:input="urlFunctionPlayer1()">
     <datalist id="player1" class="tag" >
     <option v-for="tag in tagReturn" v-bind:key="tag"> {{tag.battleTag}} </option>
    </datalist>
+   
+   <img  class="test1" src="../assets/images/icons/orc-icon-small.svg" alt="human">
+   <img  class="test1" src="../assets/images/icons/human-icon-small.svg" alt="human">
+   <img  class="test1" src="../assets/images/icons/undead-icon-small.svg" alt="human">
+   <img  class="test1" src="../assets/images/icons/nightelf-icon-small.svg" alt="human">
+   <img  class="test1" src="../assets/images/icons/random-icon-small.svg" alt="human">
+
     <input class="input-player2 input" type='text' v-model="player2.tag" list="player2" v-on:input="urlFunctionPlayer2()">
     <datalist id="player2" class="tag2" >
     <option v-for="tag2 in tagReturn2" v-bind:key="tag2"> {{tag2.battleTag}} </option>
@@ -705,6 +715,11 @@ showPanel() {
             }
             }
 
+.test1{
+      /* background-image: url(../assets/images/logo.png); */
+      width:15px;
+      height: 15px;
+}
 
 
 
