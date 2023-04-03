@@ -372,6 +372,18 @@ showPanel() {
 
 },
 
+blockButton () {
+
+  const button:any = document.querySelector(".button-show");
+  button.disabled = true;
+setTimeout(function() { button.disabled = false }, 7000);
+
+
+
+
+
+  }
+
 
 },
 
@@ -412,7 +424,7 @@ showPanel() {
 
 
 
-   <button class="button-show button" v-on:click="showRivalry(); showAll(); showPanel();"> Show</button>
+   <button class="button-show button" v-on:click="showRivalry(); showAll(); showPanel(); blockButton ();"> Show</button>
 
    <div class="results">
       <div class="big-result">
