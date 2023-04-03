@@ -83,33 +83,48 @@ async showRivalry () {
  
 this.urlGames1 =`https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=20&offset=0&opponentId=${this.player2.tag.trim().replace('#', '%23')}&pageSize=50&season=${i}&gamemode=1`;
 
+console.log(this.urlGames1);
 const resScore  = await fetch(this.urlGames1);
 const dataScore  = await resScore.json();
+console.log(
+
+ 
+  );
+  
 
   /* console.log (dataScore); */
   for (let i = 0; i < dataScore.matches.length; i++) {
     if (
       dataScore.matches[i].teams[0].players[0].battleTag == `${this.player1.tag.trim()}` &&
-      dataScore.matches[i].teams[0].won == true
+      dataScore.matches[i].teams[0].won == true &&
+      (Date.parse((dataScore.matches[i].endTime))/1000 -
+  Date.parse((dataScore.matches[i].startTime))/1000 > 60)
     ) {
       this.score1++;
     }
       else if (
       dataScore.matches[i].teams[0].players[0].battleTag == `${this.player1.tag.trim()}` &&
-      dataScore.matches[i].teams[0].won == false
+      dataScore.matches[i].teams[0].won == false &&
+      (Date.parse((dataScore.matches[i].endTime))/1000 -
+  Date.parse((dataScore.matches[i].startTime))/1000 > 60)
       ){
         this.score2++;
       }
   
     if (
       dataScore.matches[i].teams[1].players[0].battleTag == `${this.player1.tag.trim()}`  &&
-      dataScore.matches[i].teams[1].won == true
+      dataScore.matches[i].teams[1].won == true &&
+      (Date.parse((dataScore.matches[i].endTime))/1000 -
+  Date.parse((dataScore.matches[i].startTime))/1000 > 60)
       /* dataScore.matches[i].teams[1].players[0].race == `${this.mmrForm.race}` */
     ) {
       this.score1++;
     }
     else if (dataScore.matches[i].teams[1].players[0].battleTag == `${this.player1.tag.trim()}` &&
-      dataScore.matches[i].teams[1].won == false){
+      dataScore.matches[i].teams[1].won == false &&
+      (Date.parse((dataScore.matches[i].endTime))/1000 -
+  Date.parse((dataScore.matches[i].startTime))/1000 > 60)
+  ){
         this.score2++;
       }
   }
@@ -160,7 +175,9 @@ let player2score=0;
        dataScore.matches[i].teams[0].players[0].battleTag == `${this.player1.tag.trim()}` &&
        dataScore.matches[i].teams[0].won == true &&
        dataScore.matches[i].teams[0].players[0].race == `${race1}` &&
-       dataScore.matches[i].teams[1].players[0].race == `${race2}`
+       dataScore.matches[i].teams[1].players[0].race == `${race2}` &&
+      (Date.parse((dataScore.matches[i].endTime))/1000 -
+  Date.parse((dataScore.matches[i].startTime))/1000 > 60)
 
      ) {
       player1score++;
@@ -169,7 +186,9 @@ let player2score=0;
        dataScore.matches[i].teams[0].players[0].battleTag == `${this.player1.tag.trim()}` &&
        dataScore.matches[i].teams[0].won == false &&
        dataScore.matches[i].teams[0].players[0].race == `${race1}` &&
-       dataScore.matches[i].teams[1].players[0].race == `${race2}`
+       dataScore.matches[i].teams[1].players[0].race == `${race2}` &&
+      (Date.parse((dataScore.matches[i].endTime))/1000 -
+  Date.parse((dataScore.matches[i].startTime))/1000 > 60)
        ){
         player2score++;
        }
@@ -178,14 +197,19 @@ let player2score=0;
        dataScore.matches[i].teams[1].players[0].battleTag == `${this.player1.tag.trim()}`  &&
        dataScore.matches[i].teams[1].won == true &&
        dataScore.matches[i].teams[0].players[0].race == `${race2}` &&
-       dataScore.matches[i].teams[1].players[0].race == `${race1}`
+       dataScore.matches[i].teams[1].players[0].race == `${race1}` &&
+      (Date.parse((dataScore.matches[i].endTime))/1000 -
+  Date.parse((dataScore.matches[i].startTime))/1000 > 60)
      ) {
       player1score++;
      }
      else if (dataScore.matches[i].teams[1].players[0].battleTag == `${this.player1.tag.trim()}` &&
        dataScore.matches[i].teams[1].won == false &&
        dataScore.matches[i].teams[0].players[0].race == `${race2}` &&
-       dataScore.matches[i].teams[1].players[0].race == `${race1}`){
+       dataScore.matches[i].teams[1].players[0].race == `${race1}` &&
+      (Date.parse((dataScore.matches[i].endTime))/1000 -
+  Date.parse((dataScore.matches[i].startTime))/1000 > 60)
+  ){
         player2score++;
         
        }     
@@ -377,9 +401,6 @@ blockButton () {
   const button:any = document.querySelector(".button-show");
   button.disabled = true;
 setTimeout(function() { button.disabled = false }, 7000);
-
-
-
 
 
   }
