@@ -18,7 +18,9 @@ export default{
       tag:"РозовыйПони#228941",
      },
      tagReturn:[],
+     tagReturn1a:[],
      tagReturn2:[],
+     tagReturn2a:[],
      urlO:"../assets/images/icons/orc-icon-small.svg",
      urlH:"../assets/images/icons/human-icon-small.svg",
      urlU:"../assets/images/icons/undead-icon-small.svg",
@@ -55,6 +57,7 @@ methods: {
 const resTag  = await fetch(this.urlTag);
 const dataTag  = await resTag.json();
 this.tagReturn =  dataTag;
+this.tagReturn1a = this.tagReturn.filter(e=>e.battleTag.includes('#') && !e.battleTag.includes(')') && !e.battleTag.includes('(') && !e.battleTag.includes('W3CHAMPIONS') && !e.battleTag.includes('W3Champions') && !e.battleTag.includes('W3CHAMPIOI'));
     }
 },
 
@@ -65,6 +68,8 @@ this.urlTag2= `https://website-backend.w3champions.com/api/players/global-search
 const resTag2  = await fetch(this.urlTag2);
 const dataTag2  = await resTag2.json();
 this.tagReturn2 =  dataTag2;
+this.tagReturn2a = this.tagReturn2.filter(e=>e.battleTag.includes('#') && !e.battleTag.includes(')') && !e.battleTag.includes('(') && !e.battleTag.includes('W3CHAMPIONS') && !e.battleTag.includes('W3Champions') && !e.battleTag.includes('W3CHAMPIOI'));
+
 
   }
 
@@ -389,7 +394,7 @@ showPanel() {
 
     <input class="input-player1 input" type='text' v-model="player1.tag" list="player1" v-on:input="urlFunctionPlayer1()">
     <datalist id="player1" class="tag" >
-    <option v-for="tag in tagReturn" v-bind:key="tag"> {{tag.battleTag}} </option>
+    <option v-for="tag in tagReturn1a" v-bind:key="tag"> {{tag.battleTag}} </option>
    </datalist>
    
 <!--    <img  class="test1" src={this.iconO} alt="o">
@@ -400,7 +405,7 @@ showPanel() {
 
     <input class="input-player2 input" type='text' v-model="player2.tag" list="player2" v-on:input="urlFunctionPlayer2()">
     <datalist id="player2" class="tag2" >
-    <option v-for="tag2 in tagReturn2" v-bind:key="tag2"> {{tag2.battleTag}} </option>
+    <option v-for="tag2 in tagReturn2a" v-bind:key="tag2"> {{tag2.battleTag}} </option>
    </datalist>
    <div class="arrows" v-on:click="changeInput()"></div>
    
