@@ -9,7 +9,7 @@ export default{}
 
 <div class="year">© 2023</div>
 <a href="https://github.com/PteNiX?tab=repositories" class="github"> by PteN</a>
-<div class="version">beta version</div>
+<!-- <div class="version">beta version</div> -->
 
 
 </footer>
@@ -29,6 +29,7 @@ export default{}
 
 }
     .github{
+        padding-right: 2rem;
         text-decoration: none;
         color: white;
 
