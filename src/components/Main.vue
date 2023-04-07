@@ -44,9 +44,7 @@ export default{
   }
 
 },   
-/* mounted() {
-    this.changeIcons();
-  }, */
+
 methods: {
 
 
@@ -324,10 +322,7 @@ setTimeout(() => {
 },
 changeIcons (){
 
-
  
-  console.log('callback')
-  
 let icons=document.querySelectorAll('.race-column');
 icons.forEach(element => {
 
@@ -430,12 +425,6 @@ setTimeout(function() { button.disabled = false }, 7000);
     <option v-for="tag in tagReturn1a" v-bind:key="tag"> {{tag.battleTag}} </option>
    </datalist>
    
-<!--    <img  class="test1" src={this.iconO} alt="o">
-   <img  class="test1" src="../assets/images/icons/human-icon-small.svg" alt="h">
-   <img  class="test1" src="../assets/images/icons/undead-icon-small.svg" alt="u">
-   <img  class="test1" src="../assets/images/icons/nightelf-icon-small.svg" alt="e">
-   <img  class="test1" src="../assets/images/icons/random-icon-small.svg" alt="r"> -->
-
     <input class="input-player2 input" type='text' v-model="player2.tag" list="player2" v-on:input="urlFunctionPlayer2()">
     <datalist id="player2" class="tag2" >
     <option v-for="tag2 in tagReturn2a" v-bind:key="tag2"> {{tag2.battleTag}} </option>
