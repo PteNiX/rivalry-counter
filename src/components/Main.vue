@@ -1,12 +1,6 @@
 
 <script  lang="ts">
 
-/* import iconH from '../assets/images/icons/human-icon-small.svg'
-import iconO from '../assets/images/icons/orc-icon-small.svg'
-import iconE from '../assets/images/icons/nightelf-icon-small.svg'
-import iconU from '../assets/images/icons/undead-icon-small.svg'
-import iconR from '../assets/images/icons/random-icon-small.svg' */
-
 export default{
 
   data() {
@@ -81,13 +75,10 @@ async showRivalry () {
  
 this.urlGames1 =`https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=20&offset=0&opponentId=${this.player2.tag.trim().replace('#', '%23')}&pageSize=50&season=${i}&gamemode=1`;
 
-console.log(this.urlGames1);
+
 const resScore  = await fetch(this.urlGames1);
 const dataScore  = await resScore.json();
-console.log(
 
- 
-  );
   
 
   /* console.log (dataScore); */
@@ -159,7 +150,7 @@ else{
 }
 this.score1=0;
 this.score2=0;
-/*   console.log(this.score1, this.score2); */
+
 },
 
 
@@ -696,14 +687,14 @@ setTimeout(function() { button.disabled = false }, 7000);
               position: relative;
               width: 47px;
               text-align: center;
-             /*  background-color: green; */
+            
               
             }
 
 
             
             .score-column {
-             /*  background-color: yellow; */
+           
               width:18px;
               text-align: center;
             }
@@ -781,7 +772,6 @@ setTimeout(function() { button.disabled = false }, 7000);
              display: none;
         
             }
-
             .winrate2{
               display: none;
             }
@@ -828,12 +818,6 @@ setTimeout(function() { button.disabled = false }, 7000);
               left: 125px;
             }
             }
-
-.test1{
-      /* background-image: url(../assets/images/logo.png); */
-      width:15px;
-      height: 15px;
-}
 
 
 
