@@ -140,14 +140,22 @@ let score2:any = document.querySelector('.score-player2');
   let winrate1:any = document.querySelector('.winrate1');
 let winrate2:any = document.querySelector('.winrate2');
 
+let winrate1S:any = document.querySelector('.winrate1small');
+let winrate2S:any = document.querySelector('.winrate2small');
+
 if((this.score1 +this.score2)!=0) {
 winrate1.innerHTML =  Math.round((100*this.score1)/ (this.score1 +this.score2)) +'%';
 winrate2.innerHTML =  Math.round((100*this.score2)/ (this.score1 +this.score2)) + '%';
+winrate1S.innerHTML = Math.round((100*this.score1)/ (this.score1 +this.score2)) +'%';
+winrate2S.innerHTML =  Math.round((100*this.score2)/ (this.score1 +this.score2)) + '%';
 }
 
 else{
   winrate1.innerHTML=0+'%';
   winrate2.innerHTML=0+'%';
+  winrate1S.innerHTML=0+'%';
+  winrate2S.innerHTML=0+'%';
+
 }
 this.score1=0;
 this.score2=0;
@@ -446,6 +454,10 @@ setTimeout(function() { button.disabled = false }, 7000);
         <span class="name-player2 big-letter"></span>
         <span class="winrate2 big-letter"></span>
       </div>
+      <div class="con-winratesmall">
+      <div class="winrate1small"></div>
+      <div class="winrate2small"></div>
+    </div>
       <div class="all-results">
         <div class='matchup' v-for="bigItem in raceArray1" v-bind:key="bigItem"> 
   <div class='all-score' v-for="item in bigItem" v-bind:key="item">
@@ -597,8 +609,26 @@ setTimeout(function() { button.disabled = false }, 7000);
             .active{
             display: block;
             width: 95%;
-          
             }
+
+            .winrate1small{
+              display: none;
+
+            }
+
+            .winrate2small{
+              display: none;
+            }
+
+            .con-winratesmall{
+              display: flex;
+              flex-direction: row;
+              justify-content: space-around;
+              
+
+            }
+
+
             .big-result{
               display: flex;
               gap:15px;
@@ -712,6 +742,26 @@ setTimeout(function() { button.disabled = false }, 7000);
               display: none;
             }
 
+           .winrate1small{
+            position: relative;
+            display: block;
+            color: rgb(108, 0, 151);
+            width:35px;
+            background-color: rgba(255, 255, 255, 0.452);
+            text-shadow: 1px 1px 1px rgb(255, 255, 255);
+            top:2px;
+            }
+
+            .winrate2small{
+              position: relative;
+              display: block;
+              color: rgb(108, 0, 151);
+              width:35px;
+              background-color: rgba(255, 255, 255, 0.452);
+              text-shadow: 1px 1px 1px rgb(255, 255, 255);
+              top:2px;
+}
+
             .all-results{
 
               top:15%;
@@ -735,6 +785,27 @@ setTimeout(function() { button.disabled = false }, 7000);
             .winrate2{
               display: none;
             }
+
+            
+           .winrate1small{
+            position: relative;
+            display: block;
+            color: rgb(108, 0, 151);
+            width:35px;
+            background-color: rgba(255, 255, 255, 0.452);
+            text-shadow: 1px 1px 1px rgb(255, 255, 255);
+            top:2px;
+            }
+
+            .winrate2small{
+              position: relative;
+              display: block;
+              color: rgb(108, 0, 151);
+              width:35px;
+              background-color: rgba(255, 255, 255, 0.452);
+              text-shadow: 1px 1px 1px rgb(255, 255, 255);
+              top:2px;
+}
 
             .score-player1{
               font-size: 20px;
