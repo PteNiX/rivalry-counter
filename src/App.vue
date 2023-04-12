@@ -10,8 +10,7 @@ import Footer from './components/Footer.vue'
       <Main />
       <Footer />
 
-<!--         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink> -->
+
 
 
 
