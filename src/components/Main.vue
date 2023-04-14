@@ -582,18 +582,6 @@ setTimeout(function() { button.disabled = false }, 7000);
               
             }
 
-/*             .score-player2{
-              
-              
-           
-            }
-
-            .score-player1{
-              
-      
-            } */
-
-
             .results{
             display: none;
             }
@@ -651,8 +639,7 @@ setTimeout(function() { button.disabled = false }, 7000);
 
             .all-score{
               display: flex;
-              gap:5px;
-             
+              gap:5px;   
              
             }
 
