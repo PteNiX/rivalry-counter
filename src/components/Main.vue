@@ -430,7 +430,7 @@ setTimeout(function() { button.disabled = false }, 7000);
    </datalist>
    <div class="arrows" v-on:click="changeInput()"></div>
 
-   <div class="tooltip" data-tip="Count games only with more than 1 minute" tabindex="1"><img class="tooltip-image" src="../assets/images/icons/exclamation_mark.png"/></div>
+   <div class="tooltip" data-tip="> 1 min games" tabindex="1"><img class="tooltip-image" src="../assets/images/icons/exclamation_mark.png"/></div>
 
    <button class="button-show button" v-on:click="showRivalry(); showAll(); showPanel(); blockButton ();"> Show</button>
 
@@ -872,14 +872,10 @@ setTimeout(function() { button.disabled = false }, 7000);
   
 }
 
-.button{
-
-position: relative;
-top:-25px;
-
-
-
-}
+        .button{
+        position: relative;
+        top:-25px;
+        }
 
 
             }
