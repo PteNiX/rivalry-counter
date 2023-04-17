@@ -429,9 +429,8 @@ setTimeout(function() { button.disabled = false }, 7000);
     <option v-for="tag2 in tagReturn2a" v-bind:key="tag2"> {{tag2.battleTag}} </option>
    </datalist>
    <div class="arrows" v-on:click="changeInput()"></div>
-   
 
-
+   <div class="tooltip" data-tip="Count games only with more than 1 minute" tabindex="1"><img class="tooltip-image" src="../assets/images/icons/exclamation_mark.png"/></div>
 
    <button class="button-show button" v-on:click="showRivalry(); showAll(); showPanel(); blockButton ();"> Show</button>
 
@@ -526,10 +525,10 @@ setTimeout(function() { button.disabled = false }, 7000);
 
             .arrows{
               position: relative;
-              width:30px;
-              height: 30px;
+              width:25px;
+              height: 25px;
               cursor: pointer;
-              top:-55px;
+              top:-68px;
               left: 130px;
               background-image: url(../assets/images/arrows.png);
               background-size:cover;
@@ -549,7 +548,7 @@ setTimeout(function() { button.disabled = false }, 7000);
   .button{
 
             position: relative;
-            top:-20px;
+            top:-30px;
             width:4.5rem;
             height: 2rem;
             background-color:rgb(108, 0, 151);
@@ -686,6 +685,57 @@ setTimeout(function() { button.disabled = false }, 7000);
               text-align: center;
             }
 
+
+
+.tooltip {
+  top:-62px;
+  left:129px;
+  position: relative;
+  
+  float: left;
+  
+}
+.tooltip-image{
+  height:15px;
+  width: 15px;
+}
+
+.tooltip::after {
+  position: absolute;
+  right: 260%;
+  opacity: 0;
+  top:120%;
+  z-index: -100;
+  text-align: center;
+}
+.tooltip:hover::after,
+.tooltip:focus::after {
+  opacity: 1;
+  z-index: 100;
+  transform: scale(1) translateY(0);
+}
+
+/* styling the speech bubble */
+.tooltip::after {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.452);
+  border-radius: .25em;
+  bottom: 0%;
+  color: rgb(108, 0, 151);
+  width: 10em;
+  padding: 1em;
+  justify-content: center;
+  align-items: center; 
+  content: attr(data-tip);
+  transform: scale(.9) translateY(90%);
+  transition: all .5s cubic-bezier(.84, -.18, .31, 1.26) .2s;
+}
+
+.tooltip:hover::after,
+.tooltip:focus::after {
+  transition-delay: 0s;
+}
+
             @media (min-width: 650px) and (max-width: 870px) {
               .big-letter{
               
@@ -799,11 +849,39 @@ setTimeout(function() { button.disabled = false }, 7000);
 
               }
               .arrows{
-                top:-50px;
-              width: 25px;
-              height: 25px;
+              
+              top:-65px;
+              width: 20px;
+              height: 20px;
               left: 125px;
+              
             }
+
+            .tooltip::after {
+            position: absolute;
+            right: 250%;
+            top:120%;
+
+          }
+
+          .tooltip {
+            top:-57px;
+            left:125px;
+            position: relative;
+            float: left;
+  
+}
+
+.button{
+
+position: relative;
+top:-25px;
+
+
+
+}
+
+
             }
 
 
