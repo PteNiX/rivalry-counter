@@ -71,7 +71,7 @@ this.tagReturn2a = this.tagReturn2.filter(e=>e.battleTag.includes('#') && !e.bat
 async showRivalry () {
    
 
-  for(let i=2; i<15; i++) {
+  for(let i=2; i<16; i++) {
  
 this.urlGames1 =`https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=20&offset=0&opponentId=${this.player2.tag.trim().replace('#', '%23')}&pageSize=50&season=${i}&gamemode=1`;
 
