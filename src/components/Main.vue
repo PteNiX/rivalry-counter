@@ -1,8 +1,12 @@
 
 <script  lang="ts">
+interface Itag {
+  battleTag: string;
 
+}
 export default{
 
+  
   data() {
     return {
      player1:{
@@ -11,7 +15,7 @@ export default{
      player2:{
       tag:"РозовыйПони#228941",
      },
-     tagReturn:[],
+     tagReturn:[] ,
      tagReturn1a:[],
      tagReturn2:[],
      tagReturn2a:[],
@@ -37,11 +41,10 @@ export default{
      raceArray1:[1],
   }
 
-},   
-
+}, 
+  
 methods: {
-
-
+  
   async urlFunctionPlayer1() {
 
     if (this.player1.tag.length > 2) {
@@ -158,7 +161,7 @@ async showRivalryByRaces (race1:any,race2:any) {
    
 let player1score:any=0;
 let player2score=0;
-   for(let i=2; i<15; i++) {
+   for(let i=2; i<16; i++) {
   
  this.urlGames1 =`https://website-backend.w3champions.com/api/matches/search?playerId=${this.player1.tag.trim().replace('#', '%23')}&gateway=20&offset=0&opponentId=${this.player2.tag.trim().replace('#', '%23')}&pageSize=50&season=${i}&gamemode=1`;
  
@@ -452,7 +455,7 @@ setTimeout(function() { button.disabled = false }, 7000);
         <div class='matchup' v-for="bigItem in raceArray1" v-bind:key="bigItem"> 
   <div class='all-score' v-for="item in bigItem" v-bind:key="item">
         <span class="left-column">
-         <span class="info percent-column">{{item[1] }}</span> 
+         <span class="info percent-column">{{(item[1])}}</span> 
          <span class="info race-column">{{item[0]}}</span> 
          <span class="info score-column">{{item[2]}}</span>
         </span>
