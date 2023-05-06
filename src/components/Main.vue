@@ -1,12 +1,10 @@
 
 <script  lang="ts">
-interface Itag {
-  battleTag: string;
 
-}
+import type BattleTag from "@/types/battleTag";
+
 export default{
 
-  
   data() {
     return {
      player1:{
@@ -15,10 +13,10 @@ export default{
      player2:{
       tag:"РозовыйПони#228941",
      },
-     tagReturn:[] ,
-     tagReturn1a:[],
-     tagReturn2:[],
-     tagReturn2a:[],
+     tagReturn:[] as BattleTag [],
+     tagReturn1a:[] as BattleTag [],
+     tagReturn2:[] as BattleTag [],
+     tagReturn2a:[] as BattleTag [],
      urlO:"../assets/images/icons/orc-icon-small.svg",
      urlH:"../assets/images/icons/human-icon-small.svg",
      urlU:"../assets/images/icons/undead-icon-small.svg",
@@ -424,12 +422,12 @@ setTimeout(function() { button.disabled = false }, 7000);
 
     <input class="input-player1 input" type='text' v-model="player1.tag" list="player1" v-on:input="urlFunctionPlayer1()">
     <datalist id="player1" class="tag" >
-    <option v-for="tag in tagReturn1a" v-bind:key="tag"> {{tag.battleTag}} </option>
+    <option v-for="tag in tagReturn1a" v-bind:key="tag.battleTag"> {{tag.battleTag}} </option>
    </datalist>
    
     <input class="input-player2 input" type='text' v-model="player2.tag" list="player2" v-on:input="urlFunctionPlayer2()">
     <datalist id="player2" class="tag2" >
-    <option v-for="tag2 in tagReturn2a" v-bind:key="tag2"> {{tag2.battleTag}} </option>
+    <option v-for="tag2 in tagReturn2a" v-bind:key="tag2.battleTag"> {{tag2.battleTag}} </option>
    </datalist>
    <div class="arrows" v-on:click="changeInput()"></div>
 
@@ -455,7 +453,7 @@ setTimeout(function() { button.disabled = false }, 7000);
         <div class='matchup' v-for="bigItem in raceArray1" v-bind:key="bigItem"> 
   <div class='all-score' v-for="item in bigItem" v-bind:key="item">
         <span class="left-column">
-         <span class="info percent-column">{{(item[1])}}</span> 
+         <span class="info percent-column">{{item[1]}}</span> 
          <span class="info race-column">{{item[0]}}</span> 
          <span class="info score-column">{{item[2]}}</span>
         </span>
