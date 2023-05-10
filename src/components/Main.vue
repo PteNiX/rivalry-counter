@@ -3,6 +3,7 @@
 
 import type BattleTag from "@/types/battleTag";
 
+
 export default{
 
   data() {
@@ -36,7 +37,7 @@ export default{
      player1score:0,
      player2score:0, 
      raceArray:[1],
-     raceArray1:[1],
+     raceArray1:[1] as any,
   }
 
 }, 
@@ -450,7 +451,7 @@ setTimeout(function() { button.disabled = false }, 7000);
       <div class="winrate2small"></div>
     </div>
       <div class="all-results">
-        <div class='matchup' v-for="bigItem in raceArray1" v-bind:key="bigItem"> 
+        <div class='matchup' v-for="bigItem in raceArray1 " v-bind:key="bigItem"> 
   <div class='all-score' v-for="item in bigItem" v-bind:key="item">
         <span class="left-column">
          <span class="info percent-column">{{item[1]}}</span> 
