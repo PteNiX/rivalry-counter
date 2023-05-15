@@ -107,7 +107,7 @@ const dataScore  = await resScore.json();
       dataScore.matches[i].teams[1].won == true &&
       (Date.parse((dataScore.matches[i].endTime))/1000 -
   Date.parse((dataScore.matches[i].startTime))/1000 > 60)
-      /* dataScore.matches[i].teams[1].players[0].race == `${this.mmrForm.race}` */
+     
     ) {
       this.score1++;
     }
